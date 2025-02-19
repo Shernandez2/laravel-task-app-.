@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app'])
 </head>
 <body class="bg-gray-100">
-<nav class="bg-white shadow p-4">
+<nav class="bg-gray-100 shadow p-4">
     <h1 class="text-xl font-bold">My task App</h1>
 
 </nav>
