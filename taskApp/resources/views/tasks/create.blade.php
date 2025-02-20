@@ -4,11 +4,12 @@
     <div class="max-w-2xl mx-auto p-4">
         <h1 class="text-2xl font-bold mb-4">Create New Task</h1>
 
-        <form action="" method="POST" >
+        <form action="" method="POST" class="grid grid-cols-2 gap-4" >
+
             @csrf
 
             {{-- Task Name --}}
-            <div class="mb-4">
+            <div class="mb-4 border-2 border-blue-600">
                 <!-- GUIDANCE:
                 - Add a label for Task Name (e.g., <label for="task_name">Task Name</label>)
                 - The label's 'for' should match the input's 'id'.
