@@ -10,12 +10,39 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-	    // Get all tasks
-	    $tasks = Task::all();
+	   $search = $request->input('search');
+       $sort = $request->input('sort');
 
-	    return view('tasks.index', compact('tasks'));
+       $query = Task::query();
+
+       if (!empty($search)) {
+        $query->where(function($q) use ($search){
+            $q->where('task-name', 'like', '%'.$search.'%')
+            ->orWhere('task_location', 'like', '%'.$search.'%')
+            ->orWhere('category', 'like', '%'.$search.'%')
+            ->orWhere('materials_required', 'like', '%'.$search.'%');
+        });
+       }
+
+       switch ($sort) {
+        case 'deadline':
+            $query->orderBy('deadline', 'asc');
+            break;
+        case 'task_name':
+            $query->orderBy('task-name', 'asc');
+            break;
+        case 'category':
+            $query->orderBy('category', 'asc');
+            break;
+        default:
+            $query->orderBy('task_name', 'asc');
+       }
+
+       $tasks = $query->get();
+
+       return view('tasks.index', compact('tasks', 'search', 'sort'));
     }
 
     /**
@@ -59,7 +86,9 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -67,7 +96,20 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'task_name' => 'required|string|max:255',
+            'task_location' => 'nullable|string|max:255',
+            'time_complexity' => 'required|integer|min:1|max:255',
+            'materials_required' => 'nullable|string',
+            'deadline' => 'nullable|date',
+            'priority' => 'nullable|integer|min:1|max:3',
+            'category' => 'nullable|string|max:255',
+        ]);
+
+        $task = Task::findOrFail($id);
+        $task->update($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
 
     /**
@@ -75,6 +117,9 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
     }
 }
