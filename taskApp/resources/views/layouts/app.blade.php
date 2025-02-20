@@ -8,8 +8,7 @@
 </head>
 <body class="bg-white-100">
 <nav class="bg-gray-100 shadow p-4">
-    <h1 class="text-xl font-bold">My task App</h1>
-
+    <h1 class="text-xl font-bold">My Task App</h1>
 </nav>
 
 <main class="p-4">
