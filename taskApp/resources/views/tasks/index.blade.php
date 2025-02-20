@@ -5,7 +5,7 @@
 
 	<ul>
 		@forelse($tasks as $task)
-			<li class="mb-2">{{$task->$task_name}}</li>
+			<li class="mb-2">{{$task->task_name}}</li>
 		@empty
 			<li>No tasks yet.</li>
 		@endforelse

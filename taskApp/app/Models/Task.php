@@ -14,6 +14,6 @@ class Task extends Model
 		'materials_required',
 		'deadline',
 		'priority',
-		'category'
+		'category',
 	];
 }
