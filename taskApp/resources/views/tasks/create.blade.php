@@ -43,6 +43,7 @@ class="w-full border rounded px-3 py-2">
 <div class="mb-4">
 <label for="priority" class="block mb-1">Priority (Optional)</label>
 
+            @csrf
 
 
 <select name="priority" id="priority" class="w-full border rounded px-3 py-2">
