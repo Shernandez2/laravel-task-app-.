@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <h1>Task Details</h1>
+
+
 <div>
 <strong>Task Name:</strong> {{ $task->task_name }}
 </div>
