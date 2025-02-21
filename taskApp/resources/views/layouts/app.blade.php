@@ -8,7 +8,9 @@
 </head>
 <body class="bg-white-100">
     <nav class="bg-gray-600 text-white shadow p-4">
-        <h1 class="text-xl font-bold">My Task App</h1>
+        <h1 class="text-xl font-bold">
+            <a href="{{ route('tasks.index') }}">My Task App</a>
+        </h1>
     </nav>
 
     <main class="p-4">
