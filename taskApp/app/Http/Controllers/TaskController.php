@@ -18,7 +18,7 @@ class TaskController extends Controller
        $query = Task::query();
 
        if (!empty($search)) {
-        $query->where(function($q) use ($search){
+        $query->where(function($q) use ($search) {
             $q->where('task-name', 'like', '%'.$search.'%')
             ->orWhere('task_location', 'like', '%'.$search.'%')
             ->orWhere('category', 'like', '%'.$search.'%')
