@@ -7,13 +7,12 @@
     @vite(['resources/css/app.css', 'resources/js/app'])
 </head>
 <body class="bg-white-100">
-<nav class="bg-gray-100 shadow p-4">
-    <h1 class="text-xl font-bold">My Task App</h1>
-</nav>
+    <nav class="bg-gray-600 text-white shadow p-4">
+        <h1 class="text-xl font-bold">My Task App</h1>
+    </nav>
 
-<main class="p-4">
-
-@yield('content')
-</main>
-</body>
+    <main class="p-4">
+        @yield('content')
+    </main>
+ </body>
 </html>
