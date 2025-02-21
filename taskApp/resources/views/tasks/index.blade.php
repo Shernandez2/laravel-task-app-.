@@ -6,11 +6,12 @@
 
     	{{-- search and sort form --}}
     	<form action="{{ route('tasks.index') }}" method="GET" class="mb-4">
-			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search tasks..." class="border border-gray-300 px-2 py-1 rounded">
+    	    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search tasks..." class="border border-gray-300 px-2 py-1 rounded">
 			<button type="submit" class="bg-green-700 text-white px-4 py-1 ml-1 rounded hover:bg-green-800">Search & Sort</button>
 			<br>
-			<select name="sort" class="border border-gray-300 px-2 py-1 rounded ml-28 mt-2">
-				<option value="task_name" {{ request('sort') === 'task_name' ? 'selected' : '' }}>Alphabetical</option>
+
+    	    <select name="sort" class="border border-gray-300 px-2 py-1 ml-28 mt-2 rounded">
+    	        <option value="task_name" {{ request('sort') === 'task_name' ? 'selected' : '' }}>Alphabetical</option>
     	        <option value="deadline" {{ request('sort') === 'deadline' ? 'selected' : '' }}>Deadline</option>
     	        <option value="category" {{ request('sort') === 'category' ? 'selected' : '' }}>Category</option>
     	    </select>
